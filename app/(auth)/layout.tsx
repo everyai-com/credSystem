@@ -8,3 +8,4 @@ const AuthLayout=({
     );
 }
 export default AuthLayout;
+export const runtime = 'edge' 

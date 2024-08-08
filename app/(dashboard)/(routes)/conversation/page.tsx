@@ -1,4 +1,5 @@
 "use client";
+export const runtime = 'edge' 
 import Heading from "@/components/Heading";
 import { Loader, MessageSquare } from "lucide-react";
 // import React, { useState } from "react";

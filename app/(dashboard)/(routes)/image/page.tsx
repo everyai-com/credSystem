@@ -1,4 +1,5 @@
 "use client";
+export const runtime = 'edge' 
 import Heading from "@/components/Heading";
 import { ImageIcon, Loader, MessageSquare } from "lucide-react";
 // import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
