@@ -1,3 +1,4 @@
+export const runtime = 'edge' // 'nodejs' (default) | 'edge'
 const AuthLayout=({
     children
 }:{children :React.ReactNode;}) =>{
