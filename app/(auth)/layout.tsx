@@ -1,3 +1,4 @@
+export const runtime = 'edge' 
 const AuthLayout=({
     children
 }:{children :React.ReactNode;}) =>{
@@ -8,4 +9,4 @@ const AuthLayout=({
     );
 }
 export default AuthLayout;
-export const runtime = 'edge' 
+
