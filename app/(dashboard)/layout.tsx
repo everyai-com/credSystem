@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-export const runtime = 'edge' // 'nodejs' (default) | 'edge'
+export const runtime = 'edge' 
 
 
 const DashboardLayout = ({
