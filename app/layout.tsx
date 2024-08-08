@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "SAAS ",
   description: "AI platform",
 };
+export const runtime = 'edge' // 'nodejs' (default) | 'edge'
 
 export default function RootLayout({
   children,
