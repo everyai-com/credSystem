@@ -1,4 +1,4 @@
-export const runtime = 'edge' 
+export const runtime = 'edge';
 const AuthLayout=({
     children
 }:{children :React.ReactNode;}) =>{
