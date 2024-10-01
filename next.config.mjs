@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['openrouter.ai'],
+  },
     // experimental: {
     //   runtime: 'experimental-edge',
     // },
@@ -7,3 +10,4 @@ const nextConfig = {
   };
   
   export default nextConfig;
+  

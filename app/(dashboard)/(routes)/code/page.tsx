@@ -15,6 +15,7 @@ import axios from 'axios';
 import Empty from "@/components/empty";
 import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 interface Message {
   role: 'user' | 'assistant';
@@ -22,6 +23,7 @@ interface Message {
 }
 
 const Codepage = () => {
+  const proModal = useProModal();
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,18 +32,19 @@ const Codepage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const instruction={
-      role:"system",
-      content:"You are a code generator and code explainer .You must answer  in markdown code snippets and with explanation.Use Code Comments for Explanations of the give Code ."
+    const instruction = {
+      role: "system",
+      content: "You are a code generator and code explainer. You must answer in markdown code snippets and with explanation. Use Code Comments for Explanations of the given Code."
     }
 
     try {
       const response = await axios.post('/api/code', {
-        model: 'openai/gpt-3.5-turbo',
-        messages: [{ role: 'user', content: input },instruction],
+        model: 'llama-3.1-sonar-small-128k-online',
+        // messages: [{ role: 'user', content: input }, instruction],
+        messages: [{ role: 'user', content: input }],
       });
 
-      console.log('API response:', response.data);
+      // console.log('API response:', response.data);
 
       const content = response.data.content || 'Unexpected response format';
 
@@ -51,8 +54,11 @@ const Codepage = () => {
         { role: 'assistant', content },
       ]);
       setInput('');
-    } catch (error) {
-      console.error('Error:', error);
+    } catch (error: any) {
+      if(error?.response?.status===403){
+        proModal.onOpen();
+
+      }
     } finally {
       setIsLoading(false);
     }
@@ -152,6 +158,3 @@ const Codepage = () => {
 };
 
 export default Codepage;
-
-
-

@@ -6,6 +6,11 @@ import { Menu } from "lucide-react";
 import { SheetContent, SheetTrigger ,Sheet} from "./ui/sheet";
 import Sidebar from "./Sidebar";
 
+interface MobileSidebarProps {
+  apilimit: any;
+
+}
+
 const MobileSidebar = () => {
   const [isMounted,setIsMounted]=useState(false);
 
@@ -25,7 +30,7 @@ const MobileSidebar = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
-        <Sidebar />
+        <Sidebar  />
       </SheetContent>
     </Sheet>
   );

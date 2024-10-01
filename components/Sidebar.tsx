@@ -3,15 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+// import { auth } from '@clerk/nextjs/server';
 import { Montserrat } from "next/font/google";
-import { cn } from "@/lib/utils";
+
 import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Music2Icon, Settings, VideoIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { cn } from "../lib/utils"; 
+import { FreeCounter } from "./free-counter";
+// import { checkApiLimit } from "@/lib/counter";
+import { checkUserApiLimit } from "@/lib/valid";
+// import { useUser } from "@clerk/nextjs";
+import { getcurrentcount } from "@/lib/getcount";
+import { get } from "http";
 
 const montserrat=Montserrat({weight:"600",subsets:["latin"]});
-
-
+import { supabase } from '../utils/supabase-client';
+import { useUser } from "@clerk/nextjs";
 
 const routes=[
     {
@@ -59,10 +68,38 @@ const routes=[
     },
 ]
 
-
-
 const Sidebar = () => {
+  const {user} = useUser();
+  // var count1=0;
+
+   
+  
+  
+  
+
+  
+
+
+  
+  
+  
+
   const pathname=usePathname();
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const fetchCount = async () => {
+      const response = await checkUserApiLimit(user?.id);
+      setCount(response.currentCount);
+
+      //console.log("response")
+    };
+
+    fetchCount();
+    
+  });
+  
+  
+
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[rgb(17,24,39)] text-white">
       <div className="px-3 py-2 flex-1">
@@ -74,7 +111,7 @@ const Sidebar = () => {
             src="/logo.png"
             />
           </div>
-          <h1 className={cn ("text-2xl font-bold",montserrat.className)}>
+          <h1 className={cn("text-2xl font-bold",montserrat.className)}>
             Genius
           </h1>
         </Link>
@@ -88,6 +125,7 @@ const Sidebar = () => {
                   "text-zinc-400")
 
                 }
+                 // Increment count on link click
                 >
                     <div className="flex items-center flex-1">
                         <route.icon className={cn ("h-5 w-5 mr-3",route.color)}/>
@@ -100,6 +138,16 @@ const Sidebar = () => {
 
         </div>
       </div>
+      <div>
+        
+      <FreeCounter
+      apilimit={count}
+      
+      
+      />
+
+      </div>
+      
       
     </div>
   );
