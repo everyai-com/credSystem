@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { checkUserApiLimit } from '@/lib/valid';
 import { currentUser } from '@clerk/nextjs/server';
 import updateUserApiLimit from '@/lib/updatecount';
-export const runtime = 'edge' 
+ 
 interface ChatRequest {
   model: string;
   messages: any[]; // Consider using a more specific type for messages
