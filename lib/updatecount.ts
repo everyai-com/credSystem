@@ -1,4 +1,4 @@
-import { supabase } from '../utils/supabase-client';
+import { supabase } from '../utils/supabaseclient';
 
 async function updateUserApiLimit(userId: any) {
   // Check if user exists

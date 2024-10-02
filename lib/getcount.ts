@@ -1,4 +1,4 @@
-import { supabase } from '../utils/supabase-client';
+import { supabase } from '../utils/supabaseclient';
 import { useUser } from "@clerk/nextjs";
 
 
