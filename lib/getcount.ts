@@ -1,8 +1,9 @@
+"use client"
 import { supabase } from '../utils/supabaseclient';
 import { useUser } from "@clerk/nextjs";
 
 
-export async function getcurrentcount(){
+export async function Getcurrentcount(){
     try{
 
     

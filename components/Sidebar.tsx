@@ -15,7 +15,7 @@ import { FreeCounter } from "./free-counter";
 // import { checkApiLimit } from "@/lib/counter";
 import { checkUserApiLimit } from "@/lib/valid";
 // import { useUser } from "@clerk/nextjs";
-import { getcurrentcount } from "@/lib/getcount";
+// import { Getcurrentcount } from "@/lib/Getcount";
 import { get } from "http";
 
 const montserrat=Montserrat({weight:"600",subsets:["latin"]});
