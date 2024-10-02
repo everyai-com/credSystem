@@ -1,5 +1,5 @@
 "use client";
-export const runtime = 'edge'; 
+// export const runtime = 'edge'; 
 import Heading from "@/components/Heading";
 import { Image, Loader, MessageSquare } from "lucide-react";
 import React, { useState } from "react";
